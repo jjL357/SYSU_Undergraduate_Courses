@@ -1,0 +1,63 @@
+Epoch [1/50]
+Train Loss: 1.5378, Train Accuracy: 30.88%
+Validation Loss: 1.5125, Validation Accuracy: 35.60%
+Epoch [2/50]
+Train Loss: 1.4850, Train Accuracy: 36.40%
+Validation Loss: 1.4912, Validation Accuracy: 35.70%
+Epoch [3/50]
+Train Loss: 1.4580, Train Accuracy: 38.20%
+Validation Loss: 1.4603, Validation Accuracy: 38.00%
+Epoch [4/50]
+Train Loss: 1.4368, Train Accuracy: 38.55%
+Validation Loss: 1.4409, Validation Accuracy: 38.70%
+Epoch [5/50]
+Train Loss: 1.4031, Train Accuracy: 40.30%
+Validation Loss: 1.3957, Validation Accuracy: 40.00%
+Epoch [6/50]
+Train Loss: 1.3616, Train Accuracy: 42.73%
+Validation Loss: 1.3563, Validation Accuracy: 43.60%
+Epoch [7/50]
+Train Loss: 1.2993, Train Accuracy: 45.52%
+Validation Loss: 1.2848, Validation Accuracy: 45.70%
+Epoch [8/50]
+Train Loss: 1.2107, Train Accuracy: 50.95%
+Validation Loss: 1.1953, Validation Accuracy: 50.20%
+Epoch [9/50]
+Train Loss: 1.1031, Train Accuracy: 55.10%
+Validation Loss: 1.1103, Validation Accuracy: 55.50%
+Epoch [10/50]
+Train Loss: 0.9876, Train Accuracy: 60.77%
+Validation Loss: 1.0482, Validation Accuracy: 59.40%
+Epoch [11/50]
+Train Loss: 0.9020, Train Accuracy: 64.17%
+Validation Loss: 0.9993, Validation Accuracy: 61.40%
+Epoch [12/50]
+Train Loss: 0.8317, Train Accuracy: 68.12%
+Validation Loss: 1.0258, Validation Accuracy: 59.60%
+Validation loss increased or accuracy decreased.
+Epoch [13/50]
+Train Loss: 0.7602, Train Accuracy: 69.78%
+Validation Loss: 0.9406, Validation Accuracy: 62.10%
+Epoch [14/50]
+Train Loss: 0.6568, Train Accuracy: 74.60%
+Validation Loss: 0.9315, Validation Accuracy: 63.30%
+Epoch [15/50]
+Train Loss: 0.5793, Train Accuracy: 77.75%
+Validation Loss: 0.9843, Validation Accuracy: 63.00%
+Validation loss increased or accuracy decreased.
+Epoch [16/50]
+Train Loss: 0.5242, Train Accuracy: 80.80%
+Validation Loss: 1.0232, Validation Accuracy: 63.30%
+Validation loss increased or accuracy decreased.
+Epoch [17/50]
+Train Loss: 0.4289, Train Accuracy: 84.33%
+Validation Loss: 1.0254, Validation Accuracy: 64.00%
+Validation loss increased or accuracy decreased.
+Stopping training due to consecutive bad epochs.
+Training time: 991.89 seconds
+Test Loss: 1.2011, Test Accuracy: 60.00%
+Class 0 - Recall: 41.00%, Precision: 8.20%, F1: 13.67
+Class 1 - Recall: 87.00%, Precision: 17.40%, F1: 29.00
+Class 2 - Recall: 62.00%, Precision: 12.40%, F1: 20.67
+Class 3 - Recall: 39.00%, Precision: 7.80%, F1: 13.00
+Class 4 - Recall: 71.00%, Precision: 14.20%, F1: 23.67
