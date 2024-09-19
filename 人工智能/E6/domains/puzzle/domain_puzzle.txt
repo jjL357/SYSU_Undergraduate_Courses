@@ -1,0 +1,11 @@
+(define (domain puzzle)
+  (:requirements :strips :equality:typing)
+  (:types num loc) 
+  (:predicates  ())
+
+(:action slide
+             :parameters ()
+             :precondition ()
+             :effect () 
+ )
+)

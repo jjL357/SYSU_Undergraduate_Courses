@@ -1,0 +1,7 @@
+Black:9 6 score = 9000
+White: 8 7
+Black:7 6 score = 9030
+White: 7 9
+Black:8 6 score = 1000000
+White: 5 6
+Black:10 6 score = 1000000

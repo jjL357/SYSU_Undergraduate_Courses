@@ -1,0 +1,16 @@
+Black:5 8 score = 6
+Black:5 8 score = 6
+White: 5 9
+Black:7 6 score = 6
+White: 7 8
+Black:5 5 score = 0
+White: 5 4
+Black:7 4 score = -6
+White: 7 3
+Black:4 7 score = -4
+White: 9 8
+Black:10 8 score = 9010
+White: 8 7
+Black:6 5 score = 9040
+White: 8 3
+Black:3 8 score = 1000000

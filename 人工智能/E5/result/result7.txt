@@ -1,0 +1,5 @@
+Black:9 11 score = 9010
+White: 10 12
+Black:8 11 score = 9040
+White: 11 11
+Black:6 11 score = 1000000

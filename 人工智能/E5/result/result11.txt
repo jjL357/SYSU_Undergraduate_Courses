@@ -1,0 +1,7 @@
+Black:9 8 score = 9020
+White: 8 8
+Black:9 5 score = 9030
+White: 10 4
+Black:9 6 score = 1000000
+White: 9 4
+Black:9 9 score = 1000000

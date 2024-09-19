@@ -1,0 +1,6 @@
+(define (problem prob)
+ (:domain puzzle)
+ (:objects )
+ (:init )
+ (:goal ())
+)
