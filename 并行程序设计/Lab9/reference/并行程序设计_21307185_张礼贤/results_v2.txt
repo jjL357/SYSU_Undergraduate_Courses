@@ -1,0 +1,183 @@
+
+Running for m=512, n=512
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (32,32), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.039520 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (32,32), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.022112 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (16,64), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.060864 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (16,64), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.019776 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (16,16), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.064608 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 512x512, Grid: (16,16), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.025056 milliseconds
+--------------
+Running for m=768, n=768
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (48,48), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.058048 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (48,48), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.039936 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (24,96), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.113888 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (24,96), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.037920 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (24,24), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.125760 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 768x768, Grid: (24,24), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.041216 milliseconds
+--------------
+Running for m=1024, n=1024
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (64,64), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.088928 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (64,64), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.057216 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (32,128), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.192064 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (32,128), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.060800 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (32,32), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.199488 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1024x1024, Grid: (32,32), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.067488 milliseconds
+--------------
+Running for m=1280, n=1280
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (80,80), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.167360 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (80,80), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.089664 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (40,160), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.306880 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (40,160), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.093696 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (40,40), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.330848 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1280x1280, Grid: (40,40), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.102528 milliseconds
+--------------
+Running for m=1536, n=1536
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (96,96), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.199296 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (96,96), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.129568 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (48,192), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.424896 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (48,192), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.128992 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (48,48), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.458336 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1536x1536, Grid: (48,48), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.150176 milliseconds
+--------------
+Running for m=1792, n=1792
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (112,112), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.250592 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (112,112), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.168736 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (56,224), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.586048 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (56,224), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.172896 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (56,56), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.615232 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 1792x1792, Grid: (56,56), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.212512 milliseconds
+--------------
+Running for m=2048, n=2048
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (128,128), Threads: (16,16), Shared Memory: No
+Time taken for matrix transpose: 0.315200 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (128,128), Threads: (16,16), Shared Memory: Yes
+Time taken for matrix transpose: 0.215232 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (64,256), Threads: (32,8), Shared Memory: No
+Time taken for matrix transpose: 0.744256 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (64,256), Threads: (32,8), Shared Memory: Yes
+Time taken for matrix transpose: 0.216192 milliseconds
+Testing Global Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (64,64), Threads: (32,32), Shared Memory: No
+Time taken for matrix transpose: 0.746304 milliseconds
+Testing Shared Memory Transpose:
+Matrix Transpose is correct!
+Matrix size: 2048x2048, Grid: (64,64), Threads: (32,32), Shared Memory: Yes
+Time taken for matrix transpose: 0.248000 milliseconds
+--------------
