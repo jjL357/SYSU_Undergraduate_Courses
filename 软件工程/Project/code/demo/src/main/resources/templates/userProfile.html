@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            color: white;
+            background-image: url('/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1800px; /* 更宽的整体容器 */
+            width: 100%;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            width: 25%; /* 左右模块占比较小一点 */
+            animation: fadeIn 1s ease-in-out;
+            min-height: 80vh; /* Minimum height for the profile container */
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .profile-container p {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .profile-container img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .button {
+            background-color: #ff4b5c;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        .upload-input {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .upload-input input[type=file] {
+            position: absolute;
+            font-size: 100px;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+        .upload-input label {
+            display: block;
+            background-color: #ff4b5c;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .upload-input label:hover {
+            opacity: 0.8;
+        }
+
+        .upload-label {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .posts-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            flex: 1; /* 中间模块占比较大 */
+            animation: fadeIn 1s ease-in-out;
+            margin-left: 20px;
+            overflow-y: auto;
+            min-height: 80vh; /* Minimum height for the posts container */
+        }
+
+        .posts-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .post-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-item h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #ff4b5c;
+        }
+
+        .post-item p {
+            margin: 5px 0 0;
+            color: #ccc;
+        }
+
+        .post-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .post-images img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            object-fit: cover;
+        }
+
+        .image-path {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .centered-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hot-posts-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            width: 25%; /* 左右模块占比较小一点 */
+            animation: fadeIn 1s ease-in-out;
+            overflow-y: auto;
+            min-height: 80vh; /* Minimum height for the hot posts container */
+        }
+
+        .hot-posts-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .hot-post-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .hot-post-item:last-child {
+            border-bottom: none;
+        }
+
+        .hot-post-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #ff4b5c;
+        }
+
+        .hot-post-item p {
+            margin: 5px 0 0;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="profile-container">
+        <img th:src="${user.avatar != null ? '/avatar/' + user.avatar : '/avatar/0.jpg'}" alt="User Avatar">
+        <h2 id="profile-title">Welcome, <span th:text="${user.name}"></span></h2>
+        <p>Username: <span th:text="${user.name}"></span></p>
+        <p>Email: <span th:text="${user.email}"></span></p>
+
+        <form id="avatarForm" action="/uploadAvatar" method="post" enctype="multipart/form-data">
+            <div class="form-button-container">
+                <div class="upload-input">
+                    <input type="file" name="avatar" accept="image/*" required onchange="document.getElementById('avatarForm').submit();">
+                    <label class="centered-text">更换头像</label>
+                </div>
+            </div>
+        </form>
+        <div class="form-button-container">
+            <a href="/createPost" class="button">发帖子</a>
+            <a href="/myPosts" class="button">我的帖子</a>
+            <a href="/likedPosts" class="button">点赞过的帖子</a>
+            <a href="/login" class="button">登出</a>
+        </div>
+    </div>
+
+    <div class="posts-container">
+        <h2>所有帖子</h2>
+        <div th:each="post, postIndex : ${posts}" class="post-item">
+            <h3><a th:href="@{/post/{postId}/{userid}/(postId=${post.postId},userid=${user.uid})}" th:text="${post.title}">Post Title</a></h3>
+        </div>
+        <hr/>
+    </div>
+
+    <div class="hot-posts-container">
+        <h2>热门帖子</h2>
+        <div th:each="post, postIndex : ${hotPosts}" class="hot-post-item">
+            <h3><a th:href="@{/post/{postId}/{userid}/(postId=${post.postId},userid=${user.uid})}" th:text="${postIndex.index + 1 + '. ' + post.title}">Post Title</a></h3>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

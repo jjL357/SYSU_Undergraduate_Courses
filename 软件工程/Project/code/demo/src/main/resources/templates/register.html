@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>校园集市注册</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000; /* Fallback background color */
+            color: white; /* Fallback text color */
+            background-image: url('/images/background.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .register-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        input[type=text], input[type=password], input[type=email] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            font-size: 16px;
+        }
+
+        input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff4b5c; /* Color from user profile button */
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .login-link {
+            margin-top: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            color: lightblue;
+            display: block;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2 id="register-title">校园论坛注册</h2>
+
+    <form action="/register" method="post" th:object="${user}">
+        <div class="container">
+            <label for="name"><b>用户名</b></label>
+            <input type="text" placeholder="输入用户名" th:field="*{name}" required>
+            
+            <!-- 显示用户名已存在的错误信息 -->
+            <p th:if="${usernameExists}" class="error-message">该用户名已存在，请选择其他用户名。</p>
+
+            <label for="email"><b>邮箱</b></label>
+            <input type="email" placeholder="输入邮箱" th:field="*{email}" required>
+
+            <label for="password"><b>密码</b></label>
+            <input type="password" placeholder="输入密码" th:field="*{password}" required>
+
+            <button type="submit">注册</button>
+        </div>
+    </form>
+
+    <a href="/login" class="login-link">已有账号？点击这里登录</a>
+</div>
+
+</body>
+</html>

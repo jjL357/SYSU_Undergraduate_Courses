@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .post-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .post-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input[type=text], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 200px;
+            resize: vertical;
+        }
+
+        input[type=file] {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #ff4b5c;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="post-container">
+    <h2>发帖子</h2>
+    <form action="/createPost" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <label for="title"><b>标题</b></label>
+            <input type="text" placeholder="输入标题" name="title" required>
+
+            <label for="content"><b>内容</b></label>
+            <textarea placeholder="输入内容" name="content" required></textarea>
+
+            <label for="files"><b>上传照片(最多9张)</b></label><br>
+            <input type="file" name="files" multiple="multiple"><br>
+
+            <button type="submit">发布</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

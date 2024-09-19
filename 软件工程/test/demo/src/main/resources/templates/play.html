@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>音乐播放控制</title>
+</head>
+<body>
+
+<h1>音乐播放控制</h1>
+
+<button onclick="playMusic()">播放音乐</button>
+<button onclick="pauseMusic()">暂停音乐</button>
+<button onclick="checkStatus()">查看状态</button>
+
+<script>
+    function playMusic() {
+        fetch('/api/music/play', { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to play music');
+                }
+                console.log('音乐已开始播放');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function pauseMusic() {
+        fetch('/api/music/pause', { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to pause music');
+                }
+                console.log('音乐已暂停');
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function checkStatus() {
+        fetch('/api/music/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    console.log('音乐正在播放');
+                } else {
+                    console.log('音乐已暂停');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>

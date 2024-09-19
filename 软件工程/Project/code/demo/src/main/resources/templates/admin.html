@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有帖子</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            color: white;
+            background-image: url('/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%; /* Ensure it takes full width */
+            margin: 20px;
+            flex: 1;
+            overflow: hidden; /* Prevent content overflow on smaller screens */
+        }
+
+        .posts-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            flex: 1; /* Take up remaining space */
+            animation: fadeIn 1s ease-in-out;
+            margin-left: 20px; /* Adjusted margin to create separation */
+            overflow-y: auto; /* Allow for scrolling */
+        }
+
+        .posts-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .post-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            position: relative;
+            display: flex; /* Display flex for proper alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            margin-bottom: 20px; /* Add margin between each post item */
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-item h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #ff4b5c;
+            text-align: center; /* Center align the title */
+            margin-bottom: 10px; /* Add margin below title */
+        }
+
+        .post-item p {
+            margin: 10px 0; /* Add margin top and bottom */
+            color: #ccc;
+            text-align: center; /* Center align the content */
+        }
+
+        .post-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .post-images img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            object-fit: cover;
+        }
+
+        .image-path {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px; /* Add margin at the top of the button container */
+        }
+
+        .button {
+            background-color: #ff4b5c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="posts-container">
+        <h2>所有帖子</h2>
+        <div th:each="post, postIndex : ${posts}" class="post-item">
+            <a th:href="@{/post/{postId}/{userid}(postId=${post.postId},userid=${user.uid})}" th:text="${post.title}" class="centered-text post-title">Post Title</a>
+            
+            <p th:text="${post.content}">Post Content</p>
+            
+            <div class="post-images" th:if="${postPhotos.containsKey(post.postId) and #lists.size(postPhotos.get(post.postId)) > 0}">
+                <div th:each="photo : ${postPhotos.get(post.postId)}">
+                    <img th:src="@{/posts_photos/{postId}/{photo}(postId=${post.postId}, photo=${photo})}" alt="Post Image" />
+                </div>
+            </div>
+            
+            <div class="image-path" th:unless="${postPhotos.containsKey(post.postId)}">No Images</div>
+            
+            <!-- Delete button -->
+            <div class="button-container">
+                <form th:action="@{/admin/deletePost/{postId}(postId=${post.postId})}" method="post">
+                    <button type="submit" class="button" onclick="return confirm('确认删除该帖子？');">删除该帖</button>
+                </form>
+            </div>
+        </div>
+        <hr/>
+    </div>
+</div>
+
+<script>
+    // Refresh page after avatar upload
+    const avatarForm = document.getElementById('avatarForm');
+    if (avatarForm) {
+        avatarForm.addEventListener('submit', function() {
+            setTimeout(() => location.reload(), 100);
+        });
+    }
+</script>
+
+</body>
+</html>

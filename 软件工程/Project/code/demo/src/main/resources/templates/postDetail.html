@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子详情</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            color: white;
+            background-image: url('/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .author-info img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 2px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .author-info img:hover {
+            transform: scale(1.1);
+        }
+
+        .author-info span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4b5c;
+        }
+
+        .post-content {
+            margin-bottom: 20px;
+        }
+
+        .post-content p {
+            font-size: 20px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .post-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .post-images a {
+            margin: 5px;
+        }
+
+        .post-images img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .post-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .button {
+            background-color: #ff4b5c;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        .like-button {
+            background-color: #4CAF50;
+        }
+
+        .like-button:hover {
+            background-color: #45a049;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+        }
+
+        .comment-section h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .comment-item {
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-item img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 1px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .comment-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .comment-item .comment-content {
+            flex-grow: 1;
+        }
+
+        .comment-item .comment-content p {
+            margin: 0 0 5px 0;
+        }
+
+        .comment-item .comment-content span {
+            font-weight: bold;
+            color: #ff4b5c;
+        }
+
+        .reply-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .reply-button:hover {
+            background-color: #555;
+        }
+
+        .reply-form {
+            margin-top: 10px;
+            margin-left: 50px;
+            display: none;
+        }
+
+        .reply-form textarea {
+            width: calc(100% - 90px);
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            resize: vertical;
+            float: left;
+        }
+
+        .reply-form button {
+            float: right;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .reply-form button:hover {
+            background-color: #555;
+        }
+
+        .child-comments {
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+
+        .child-comments .comment-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            padding: 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .child-comments .comment-item p {
+            margin-bottom: 3px;
+        }
+
+        .child-comments .reply-button {
+            background-color: #444;
+        }
+
+        .child-comments .reply-button:hover {
+            background-color: #666;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 th:text="${post.title}">Post Title</h2>
+    <div class="author-info">
+        <img th:src="${author.avatar != null ? '/avatar/' + author.avatar : '/avatar/0.jpg'}" alt="Author Avatar">
+        <span>作者: <span th:text="${author.name}">Author Name</span></span>
+    </div>
+    <div class="post-content">
+        <strong>内容:</strong>
+        <p th:text="${post.content}">Post Content</p>
+    </div>
+    <div class="post-images" th:if="${postPhotos.containsKey(post.postId) and #lists.size(postPhotos.get(post.postId)) > 0}">
+        <div th:each="photo : ${postPhotos.get(post.postId)}">
+            <a th:href="@{/posts_photos/{p}/{photo}(p=${post.postId}, photo=${photo})}" data-lightbox="post-gallery">
+                <img th:src="@{/posts_photos/{p}/{photo}(p=${post.postId}, photo=${photo})}" alt="Post Image" />
+            </a>
+        </div>
+    </div>
+    <p>点赞数: <span id="likeCount" th:text="${likeCount}">0</span></p>
+    <div th:if="${likedByUser}">
+        <div class="button like-button">
+            <form th:action="@{/processLikes/{postId}/{uid}(postId=${post.postId}, uid=${user.uid})}" method="post">
+                <button type="submit" style="border: none;">已点赞</button>
+            </form>
+        </div>
+    </div>
+    <div th:unless="${likedByUser}">
+        <div class="button">
+            <form th:action="@{/processLikes/{postId}/{uid}(postId=${post.postId}, uid=${user.uid})}" method="post">
+                <button type="submit">点赞</button>
+            </form>
+        </div>
+    </div>
+    <div class="comment-section">
+        <h3>评论：</h3>
+        <div th:each="comment : ${comments}">
+            <div class="comment-item">
+                <img th:src="${comment.user.avatar != null ? '/avatar/' + comment.user.avatar : '/avatar/0.jpg'}" alt="Author Avatar">
+                <div class="comment-content">
+                    <span th:text="${comment.user.name}">Comment Author</span>
+                    <p th:text="${comment.content}">Comment Content</p>
+                    <!--
+                    <button class="reply-button" onclick="toggleReplyForm(event, 'reply-form-${comment.id}')">回复</button>
+                    <form id="reply-form-${comment.id}" class="reply-form" th:action="@{/reply/{postId}/{parentId}/{uid}(postId=${post.postId}, uid=${user.uid},parentId=${comment.id})}" method="post" style="clear: both;">
+                        <textarea name="content" rows="2"></textarea>
+                        <button type="submit">提交</button>
+                    </form>
+                    <div class="child-comments">
+                        <div th:each="child : ${comment.children}">
+                            <div class="comment-item">
+                                <img th:src="${child.user.avatar != null ? '/avatar/' + child.user.avatar : '/avatar/0.jpg'}" alt="Child Author Avatar">
+                                <div class="comment-content">
+                                    <span th:text="${child.user.name}">Child Comment Author</span>
+                                    <p th:text="${child.content}">Child Comment Content</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+        <!-- 评论输入框 -->
+        <form id="comment-form" th:action="@{/comment/{postId}/{uid}(postId=${post.postId}, uid=${user.uid})}" method="post">
+            <input type="hidden" name="postId" th:value="${post.postId}">
+            <input type="hidden" name="parentId" value="0">
+            <textarea name="content" rows="3" placeholder="发表评论..."></textarea>
+            <button type="submit" class="button">发表评论</button>
+        </form>
+    </div>
+    <!-- 返回按钮 -->
+    <a href="/userProfile" class="button">返回</a>
+</div>
+
+<script>
+    function toggleReplyForm(event, formId) {
+        var form = document.getElementById(formId);
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+</script>
+
+<!-- 引入 lightbox.min.js 用于显示帖子图片 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Play Music</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .music-container {
+            text-align: center;
+        }
+        .music-player {
+            margin-bottom: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .music-controls button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+        .music-controls button:hover {
+            opacity: 0.8;
+        }
+        .seek-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            margin-top: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        .seek-bar .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="music-container">
+    <h2>播放音乐</h2>
+    <div class="music-player">
+        <audio id="music" controls>
+            <source src="/music/1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="music-controls">
+        <button id="play">播放</button>
+        <button id="pause">暂停</button>
+    </div>
+    <div class="seek-bar">
+        <div class="progress"></div>
+    </div>
+    <a href="/userProfile" class="button">返回用户信息页面</a>
+</div>
+
+<script>
+    const music = document.getElementById('music');
+    const playButton = document.getElementById('play');
+    const pauseButton = document.getElementById('pause');
+    const seekBar = document.querySelector('.seek-bar');
+    const progressBar = document.querySelector('.progress');
+
+    playButton.addEventListener('click', function() {
+        music.play();
+    });
+
+    pauseButton.addEventListener('click', function() {
+        music.pause();
+    });
+
+    music.addEventListener('timeupdate', function() {
+        const duration = music.duration;
+        const currentTime = music.currentTime;
+        const progress = (currentTime / duration) * 100;
+        progressBar.style.width = progress + '%';
+    });
+
+    seekBar.addEventListener('click', function(e) {
+        const rect = seekBar.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = x / rect.width;
+        const newTime = percentage * music.duration;
+        music.currentTime = newTime;
+    });
+</script>
+
+</body>
+</html>

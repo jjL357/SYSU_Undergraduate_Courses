@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" modified="2024-05-22T07:41:42.320Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="DDQEzOYxehxo9lK0KRiD" version="24.4.4" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1511" dy="1172" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="hMm2tI458CoSIZLdBXkz-0" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="920" y="120" width="350" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="hMm2tI458CoSIZLdBXkz-5" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;用户认证授权&amp;nbsp; 用户登入&amp;nbsp;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="921" y="270" width="379" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="hMm2tI458CoSIZLdBXkz-6" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;移动端设备界面 用户界面&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="920" y="120" width="380" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="hMm2tI458CoSIZLdBXkz-7" value="&lt;p class=&quot;MsoNormal&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;搜索查看资产信息&amp;nbsp; 上传资产 删除资产 修改资产信息&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="920" y="410" width="380" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="hMm2tI458CoSIZLdBXkz-8" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;数据库备份 事务管理数据库&amp;nbsp; &amp;nbsp;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="920" y="550" width="380" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

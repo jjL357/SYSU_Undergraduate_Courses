@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liked Posts</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            color: white;
+            background-image: url('/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+            animation: fadeIn 1s ease-in-out;
+            overflow: hidden;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .no-posts-message p {
+            font-size: 20px;
+            color: #ccc;
+            text-align: center;
+        }
+
+        .post-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-item h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #ff4b5c;
+        }
+
+        .post-item p {
+            margin: 5px 0 0;
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>我赞过的帖子</h2>
+    <div th:if="${likedPosts.empty}" class="no-posts-message">
+        <p>You haven't liked any posts yet.</p>
+    </div>
+    <div th:each="post : ${likedPosts}" class="post-item">
+        <h3><a th:href="@{/post/{postId}/{userid}(postId=${post.postId},userid=${user.uid})}" th:text="${post.title}">Post Title</a></h3>
+    </div>
+</div>
+
+</body>
+</html>
