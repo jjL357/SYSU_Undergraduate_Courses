@@ -1,0 +1,1 @@
+ stitched_image_fina

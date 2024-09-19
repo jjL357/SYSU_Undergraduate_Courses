@@ -1,0 +1,109 @@
+[2024-06-14 01:08:30,235 WARNING] USE GPU: 2 for training
+[2024-06-14 01:08:30,300 INFO] Number of Trainable Params: 1469642
+[2024-06-14 01:08:38,455 INFO] model_arch: <models.fixmatch.fixmatch.FixMatch object at 0x7f568f232d50>
+[2024-06-14 01:08:38,457 INFO] Arguments: Namespace(T=0.5, alg='fixmatch', amp=False, batch_size=64, bn_momentum=0.0010000000000000009, c='config/fixmatch/fixmatch_cifar10_40_0.yaml', clip=0, data_dir='./data', dataset='cifar10', depth=28, dist_backend='nccl', dist_url='tcp://127.0.0.1:10006', distributed=False, dropout=0.0, ema_m=0.999, epoch=1, eval_batch_size=1024, gpu=2, hard_label=True, leaky_slope=0.1, load_path='None', lr=0.03, momentum=0.9, multiprocessing_distributed=False, net='WideResNet', net_from_name=False, num_classes=10, num_eval_iter=5000, num_labels=40, num_train_iter=20000, num_workers=1, optim='SGD', overwrite=True, p_cutoff=0.95, rank=0, resume=False, save_dir='./saved_models', save_name='fixmatch_cifar10_40_0', seed=0, train_sampler='RandomSampler', ulb_loss_ratio=1.0, uratio=7, use_tensorboard=True, weight_decay=0.0005, widen_factor=2, world_size=1)
+[2024-06-14 01:08:40,165 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2024-06-14 01:08:46,080 INFO] confusion matrix:
+[[0.812 0.094 0.094 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.954 0.01  0.036 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.903 0.023 0.074 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.943 0.02  0.037 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.937 0.01  0.053 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.92  0.033 0.047 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.969 0.    0.031 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.939 0.009 0.052 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.865 0.066 0.069 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.969 0.009 0.022 0.    0.    0.    0.    0.    0.    0.   ]]
+[2024-06-14 01:08:51,391 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/latest_model.pth
+[2024-06-14 01:08:54,977 INFO] confusion matrix:
+[[0.827 0.087 0.086 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.958 0.01  0.032 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.908 0.022 0.07  0.    0.    0.    0.    0.    0.    0.   ]
+ [0.947 0.019 0.034 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.939 0.01  0.051 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.922 0.032 0.046 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.972 0.    0.028 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.944 0.009 0.047 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.867 0.065 0.068 0.    0.    0.    0.    0.    0.    0.   ]
+ [0.97  0.009 0.021 0.    0.    0.    0.    0.    0.    0.   ]]
+[2024-06-14 01:08:55,013 INFO] 0 iteration, USE_EMA: True, {'train/sup_loss': tensor(2.3330, device='cuda:2'), 'train/unsup_loss': tensor(0., device='cuda:2'), 'train/total_loss': tensor(2.3330, device='cuda:2'), 'train/mask_ratio': tensor(1., device='cuda:2'), 'lr': 0.0299999999291586, 'train/prefecth_time': 7.275130859375, 'train/run_time': 3.81620556640625, 'eval/loss': tensor(13.4822, device='cuda:2'), 'eval/top-1-acc': 0.0907, 'eval/top-5-acc': 0.5013, 'eval/precision': 0.027231711023995863, 'eval/recall': 0.0907, 'eval/F1': 0.027154145561278032, 'eval/AUC': 0.48566306111111107}, BEST_EVAL_ACC: 0.0907, at 0 iters
+[2024-06-14 01:08:55,149 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 02:36:58,707 INFO] confusion matrix:
+[[0.594 0.007 0.302 0.001 0.    0.004 0.012 0.    0.067 0.013]
+ [0.413 0.041 0.256 0.    0.006 0.    0.001 0.    0.042 0.241]
+ [0.091 0.002 0.816 0.001 0.002 0.005 0.078 0.    0.003 0.002]
+ [0.024 0.002 0.924 0.004 0.    0.018 0.019 0.004 0.003 0.002]
+ [0.065 0.    0.867 0.    0.003 0.013 0.043 0.004 0.003 0.002]
+ [0.019 0.    0.928 0.003 0.    0.029 0.014 0.003 0.002 0.002]
+ [0.013 0.    0.895 0.001 0.    0.009 0.079 0.001 0.002 0.   ]
+ [0.111 0.    0.852 0.001 0.006 0.008 0.006 0.01  0.004 0.002]
+ [0.39  0.011 0.181 0.001 0.002 0.    0.003 0.    0.381 0.031]
+ [0.35  0.019 0.316 0.001 0.003 0.001 0.001 0.002 0.036 0.271]]
+[2024-06-14 02:36:58,716 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0006, device='cuda:2'), 'train/unsup_loss': tensor(0.2156, device='cuda:2'), 'train/total_loss': tensor(0.2162, device='cuda:2'), 'train/mask_ratio': tensor(0.4487, device='cuda:2'), 'lr': 0.028245627333026553, 'train/prefecth_time': 0.004354047775268555, 'train/run_time': 0.8515589599609374, 'eval/loss': tensor(5.1687, device='cuda:2'), 'eval/top-1-acc': 0.2228, 'eval/top-5-acc': 0.733, 'eval/precision': 0.35988298165567395, 'eval/recall': 0.22280000000000003, 'eval/F1': 0.1737591861972263, 'eval/AUC': 0.6998179777777778}, BEST_EVAL_ACC: 0.2228, at 5000 iters
+[2024-06-14 02:36:58,853 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 03:51:10,856 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/latest_model.pth
+[2024-06-14 03:51:13,953 INFO] confusion matrix:
+[[0.654 0.021 0.189 0.001 0.    0.005 0.017 0.001 0.094 0.018]
+ [0.477 0.234 0.079 0.    0.    0.001 0.001 0.    0.019 0.189]
+ [0.112 0.003 0.775 0.001 0.002 0.005 0.09  0.002 0.008 0.002]
+ [0.046 0.008 0.868 0.005 0.    0.016 0.044 0.005 0.006 0.002]
+ [0.075 0.001 0.815 0.    0.005 0.006 0.071 0.022 0.004 0.001]
+ [0.03  0.005 0.891 0.002 0.002 0.031 0.022 0.011 0.005 0.001]
+ [0.024 0.    0.827 0.003 0.    0.007 0.129 0.002 0.003 0.005]
+ [0.157 0.002 0.502 0.001 0.003 0.008 0.01  0.31  0.003 0.004]
+ [0.343 0.019 0.068 0.001 0.001 0.001 0.008 0.002 0.547 0.01 ]
+ [0.387 0.268 0.117 0.    0.001 0.    0.004 0.004 0.038 0.181]]
+[2024-06-14 03:51:14,011 INFO] 10000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0013, device='cuda:2'), 'train/unsup_loss': tensor(0.2513, device='cuda:2'), 'train/total_loss': tensor(0.2526, device='cuda:2'), 'train/mask_ratio': tensor(0.3571, device='cuda:2'), 'lr': 0.023189005636406333, 'train/prefecth_time': 0.004368544101715088, 'train/run_time': 0.819610595703125, 'eval/loss': tensor(4.8275, device='cuda:2'), 'eval/top-1-acc': 0.2871, 'eval/top-5-acc': 0.7909, 'eval/precision': 0.4333602851351279, 'eval/recall': 0.2871, 'eval/F1': 0.25562091545258026, 'eval/AUC': 0.7449609833333333}, BEST_EVAL_ACC: 0.2871, at 10000 iters
+[2024-06-14 03:51:14,146 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 05:05:38,466 INFO] confusion matrix:
+[[0.857 0.028 0.044 0.    0.    0.    0.045 0.015 0.01  0.001]
+ [0.644 0.315 0.003 0.    0.    0.    0.006 0.003 0.    0.029]
+ [0.155 0.002 0.308 0.    0.001 0.011 0.426 0.097 0.    0.   ]
+ [0.092 0.01  0.452 0.006 0.    0.067 0.308 0.061 0.003 0.001]
+ [0.052 0.    0.04  0.001 0.001 0.005 0.549 0.351 0.001 0.   ]
+ [0.05  0.006 0.326 0.003 0.    0.168 0.332 0.113 0.002 0.   ]
+ [0.037 0.002 0.144 0.    0.    0.005 0.801 0.011 0.    0.   ]
+ [0.043 0.005 0.066 0.001 0.001 0.018 0.058 0.806 0.002 0.   ]
+ [0.58  0.027 0.016 0.    0.    0.001 0.01  0.005 0.36  0.001]
+ [0.521 0.356 0.019 0.    0.    0.    0.008 0.01  0.001 0.085]]
+[2024-06-14 05:05:38,479 INFO] 15000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0003, device='cuda:2'), 'train/unsup_loss': tensor(0.1801, device='cuda:2'), 'train/total_loss': tensor(0.1804, device='cuda:2'), 'train/mask_ratio': tensor(0.3638, device='cuda:2'), 'lr': 0.015421313935881444, 'train/prefecth_time': 0.004415487766265869, 'train/run_time': 0.8430995483398438, 'eval/loss': tensor(4.8689, device='cuda:2'), 'eval/top-1-acc': 0.3707, 'eval/top-5-acc': 0.8258, 'eval/precision': 0.49479904708656053, 'eval/recall': 0.37070000000000003, 'eval/F1': 0.309572152820163, 'eval/AUC': 0.8007247499999999}, BEST_EVAL_ACC: 0.3707, at 15000 iters
+[2024-06-14 05:05:38,598 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 05:35:23,790 INFO] confusion matrix:
+[[0.779 0.058 0.034 0.    0.    0.001 0.078 0.023 0.027 0.   ]
+ [0.044 0.939 0.004 0.    0.    0.    0.003 0.007 0.001 0.002]
+ [0.113 0.006 0.357 0.001 0.001 0.004 0.425 0.092 0.001 0.   ]
+ [0.025 0.022 0.498 0.    0.    0.063 0.327 0.061 0.004 0.   ]
+ [0.022 0.003 0.036 0.    0.003 0.001 0.608 0.326 0.001 0.   ]
+ [0.011 0.011 0.322 0.002 0.    0.165 0.386 0.101 0.002 0.   ]
+ [0.01  0.005 0.168 0.    0.    0.005 0.803 0.005 0.004 0.   ]
+ [0.012 0.008 0.074 0.    0.001 0.012 0.073 0.817 0.003 0.   ]
+ [0.242 0.08  0.019 0.    0.001 0.    0.018 0.007 0.633 0.   ]
+ [0.073 0.872 0.022 0.    0.    0.    0.007 0.009 0.003 0.014]]
+[2024-06-14 05:35:23,850 INFO] 17000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0005, device='cuda:2'), 'train/unsup_loss': tensor(0.1501, device='cuda:2'), 'train/total_loss': tensor(0.1506, device='cuda:2'), 'train/mask_ratio': tensor(0.3237, device='cuda:2'), 'lr': 0.011750153400260371, 'train/prefecth_time': 0.004348512172698975, 'train/run_time': 0.8585072631835937, 'eval/loss': tensor(4.5411, device='cuda:2'), 'eval/top-1-acc': 0.451, 'eval/top-5-acc': 0.8453, 'eval/precision': 0.5109767196041848, 'eval/recall': 0.45100000000000007, 'eval/F1': 0.37249272092748253, 'eval/AUC': 0.8359403444444443}, BEST_EVAL_ACC: 0.451, at 17000 iters
+[2024-06-14 05:35:23,989 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 05:50:20,217 INFO] confusion matrix:
+[[0.759 0.064 0.022 0.    0.    0.    0.096 0.021 0.038 0.   ]
+ [0.015 0.974 0.003 0.    0.    0.    0.003 0.004 0.001 0.   ]
+ [0.113 0.009 0.346 0.    0.001 0.004 0.45  0.074 0.003 0.   ]
+ [0.018 0.026 0.462 0.    0.    0.045 0.379 0.063 0.007 0.   ]
+ [0.02  0.004 0.028 0.    0.003 0.    0.665 0.279 0.001 0.   ]
+ [0.008 0.011 0.292 0.    0.    0.14  0.441 0.106 0.002 0.   ]
+ [0.005 0.006 0.157 0.    0.    0.004 0.819 0.004 0.005 0.   ]
+ [0.011 0.009 0.062 0.    0.    0.01  0.093 0.811 0.004 0.   ]
+ [0.108 0.079 0.014 0.    0.    0.    0.02  0.004 0.775 0.   ]
+ [0.031 0.927 0.016 0.    0.    0.    0.007 0.005 0.008 0.006]]
+[2024-06-14 05:50:20,277 INFO] 18000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0003, device='cuda:2'), 'train/unsup_loss': tensor(0.1638, device='cuda:2'), 'train/total_loss': tensor(0.1641, device='cuda:2'), 'train/mask_ratio': tensor(0.2746, device='cuda:2'), 'lr': 0.009826957485191697, 'train/prefecth_time': 0.003287424087524414, 'train/run_time': 0.9047916259765625, 'eval/loss': tensor(4.6403, device='cuda:2'), 'eval/top-1-acc': 0.4633, 'eval/top-5-acc': 0.8458, 'eval/precision': 0.5631150799340698, 'eval/recall': 0.4633000000000001, 'eval/F1': 0.38292751949397064, 'eval/AUC': 0.8453920333333333}, BEST_EVAL_ACC: 0.4633, at 18000 iters
+[2024-06-14 05:50:20,398 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
+[2024-06-14 06:05:14,946 INFO] confusion matrix:
+[[0.757 0.069 0.021 0.    0.    0.    0.096 0.019 0.038 0.   ]
+ [0.006 0.984 0.002 0.    0.    0.    0.001 0.005 0.002 0.   ]
+ [0.104 0.008 0.361 0.    0.001 0.003 0.462 0.056 0.005 0.   ]
+ [0.021 0.027 0.456 0.002 0.    0.046 0.393 0.045 0.01  0.   ]
+ [0.022 0.005 0.031 0.    0.004 0.    0.71  0.227 0.001 0.   ]
+ [0.005 0.013 0.282 0.001 0.    0.137 0.474 0.083 0.005 0.   ]
+ [0.005 0.006 0.156 0.    0.    0.003 0.823 0.002 0.005 0.   ]
+ [0.011 0.012 0.066 0.    0.    0.006 0.108 0.793 0.004 0.   ]
+ [0.065 0.065 0.011 0.    0.    0.    0.019 0.003 0.837 0.   ]
+ [0.022 0.947 0.012 0.    0.    0.    0.005 0.001 0.009 0.004]]
+[2024-06-14 06:05:15,006 INFO] 19000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.0003, device='cuda:2'), 'train/unsup_loss': tensor(0.1685, device='cuda:2'), 'train/total_loss': tensor(0.1687, device='cuda:2'), 'train/mask_ratio': tensor(0.2455, device='cuda:2'), 'lr': 0.007857369471732094, 'train/prefecth_time': 0.0047272639274597164, 'train/run_time': 0.8887439575195313, 'eval/loss': tensor(4.7737, device='cuda:2'), 'eval/top-1-acc': 0.4702, 'eval/top-5-acc': 0.8463, 'eval/precision': 0.6454383836060518, 'eval/recall': 0.4702, 'eval/F1': 0.39140672376469915, 'eval/AUC': 0.8446177388888889}, BEST_EVAL_ACC: 0.4702, at 19000 iters
+[2024-06-14 06:05:15,140 INFO] model saved: ./saved_models/fixmatch_cifar10_40_0/model_best.pth
