@@ -1,0 +1,551 @@
+Grammar
+
+    0 $accept: code $end
+
+    1 code: /* empty */
+    2     | code line
+
+    3 line: codes_in_line NEWLINE
+
+    4 codes_in_line: code_in_line
+    5              | codes_in_line code_in_line
+
+    6 code_in_line: SEMICOLON
+    7             | definition SEMICOLON
+    8             | PRINT L_BRACKET expression R_BRACKET SEMICOLON
+    9             | var_assign SEMICOLON
+
+   10 var_assign: VAR ASSIGN expression
+   11           | VAR ASSIGN expression COMMA var_assign
+
+   12 definition: INT VAR ASSIGN expression
+   13           | INT VAR
+   14           | definition COMMA VAR
+   15           | definition COMMA VAR ASSIGN expression
+
+   16 expression: term
+   17           | expression ADD term
+   18           | expression SUB term
+
+   19 term: single
+   20     | term MUL single
+   21     | term DIV single
+
+   22 single: NUM
+   23       | L_BRACKET expression R_BRACKET
+   24       | SUB NUM
+   25       | VAR
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ADD (258) 17
+SUB (259) 18 24
+MUL (260) 20
+DIV (261) 21
+NEWLINE (262) 3
+SEMICOLON (263) 6 7 8 9
+ASSIGN (264) 10 11 12 15
+COMMA (265) 11 14 15
+PRINT (266) 8
+INT (267) 12 13
+R_BRACKET (268) 8 23
+L_BRACKET (269) 8 23
+NUM (270) 22 24
+VAR (271) 10 11 12 13 14 15 25
+
+
+Nonterminals, with rules where they appear
+
+$accept (17)
+    on left: 0
+code (18)
+    on left: 1 2, on right: 0 2
+line (19)
+    on left: 3, on right: 2
+codes_in_line (20)
+    on left: 4 5, on right: 3 5
+code_in_line (21)
+    on left: 6 7 8 9, on right: 4 5
+var_assign (22)
+    on left: 10 11, on right: 9 11
+definition (23)
+    on left: 12 13 14 15, on right: 7 14 15
+expression (24)
+    on left: 16 17 18, on right: 8 10 11 12 15 17 18 23
+term (25)
+    on left: 19 20 21, on right: 16 17 18 20 21
+single (26)
+    on left: 22 23 24 25, on right: 19 20 21
+
+
+State 0
+
+    0 $accept: . code $end
+
+    $default  reduce using rule 1 (code)
+
+    code  go to state 1
+
+
+State 1
+
+    0 $accept: code . $end
+    2 code: code . line
+
+    $end       shift, and go to state 2
+    SEMICOLON  shift, and go to state 3
+    PRINT      shift, and go to state 4
+    INT        shift, and go to state 5
+    VAR        shift, and go to state 6
+
+    line           go to state 7
+    codes_in_line  go to state 8
+    code_in_line   go to state 9
+    var_assign     go to state 10
+    definition     go to state 11
+
+
+State 2
+
+    0 $accept: code $end .
+
+    $default  accept
+
+
+State 3
+
+    6 code_in_line: SEMICOLON .
+
+    $default  reduce using rule 6 (code_in_line)
+
+
+State 4
+
+    8 code_in_line: PRINT . L_BRACKET expression R_BRACKET SEMICOLON
+
+    L_BRACKET  shift, and go to state 12
+
+
+State 5
+
+   12 definition: INT . VAR ASSIGN expression
+   13           | INT . VAR
+
+    VAR  shift, and go to state 13
+
+
+State 6
+
+   10 var_assign: VAR . ASSIGN expression
+   11           | VAR . ASSIGN expression COMMA var_assign
+
+    ASSIGN  shift, and go to state 14
+
+
+State 7
+
+    2 code: code line .
+
+    $default  reduce using rule 2 (code)
+
+
+State 8
+
+    3 line: codes_in_line . NEWLINE
+    5 codes_in_line: codes_in_line . code_in_line
+
+    NEWLINE    shift, and go to state 15
+    SEMICOLON  shift, and go to state 3
+    PRINT      shift, and go to state 4
+    INT        shift, and go to state 5
+    VAR        shift, and go to state 6
+
+    code_in_line  go to state 16
+    var_assign    go to state 10
+    definition    go to state 11
+
+
+State 9
+
+    4 codes_in_line: code_in_line .
+
+    $default  reduce using rule 4 (codes_in_line)
+
+
+State 10
+
+    9 code_in_line: var_assign . SEMICOLON
+
+    SEMICOLON  shift, and go to state 17
+
+
+State 11
+
+    7 code_in_line: definition . SEMICOLON
+   14 definition: definition . COMMA VAR
+   15           | definition . COMMA VAR ASSIGN expression
+
+    SEMICOLON  shift, and go to state 18
+    COMMA      shift, and go to state 19
+
+
+State 12
+
+    8 code_in_line: PRINT L_BRACKET . expression R_BRACKET SEMICOLON
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    expression  go to state 24
+    term        go to state 25
+    single      go to state 26
+
+
+State 13
+
+   12 definition: INT VAR . ASSIGN expression
+   13           | INT VAR .
+
+    ASSIGN  shift, and go to state 27
+
+    $default  reduce using rule 13 (definition)
+
+
+State 14
+
+   10 var_assign: VAR ASSIGN . expression
+   11           | VAR ASSIGN . expression COMMA var_assign
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    expression  go to state 28
+    term        go to state 25
+    single      go to state 26
+
+
+State 15
+
+    3 line: codes_in_line NEWLINE .
+
+    $default  reduce using rule 3 (line)
+
+
+State 16
+
+    5 codes_in_line: codes_in_line code_in_line .
+
+    $default  reduce using rule 5 (codes_in_line)
+
+
+State 17
+
+    9 code_in_line: var_assign SEMICOLON .
+
+    $default  reduce using rule 9 (code_in_line)
+
+
+State 18
+
+    7 code_in_line: definition SEMICOLON .
+
+    $default  reduce using rule 7 (code_in_line)
+
+
+State 19
+
+   14 definition: definition COMMA . VAR
+   15           | definition COMMA . VAR ASSIGN expression
+
+    VAR  shift, and go to state 29
+
+
+State 20
+
+   24 single: SUB . NUM
+
+    NUM  shift, and go to state 30
+
+
+State 21
+
+   23 single: L_BRACKET . expression R_BRACKET
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    expression  go to state 31
+    term        go to state 25
+    single      go to state 26
+
+
+State 22
+
+   22 single: NUM .
+
+    $default  reduce using rule 22 (single)
+
+
+State 23
+
+   25 single: VAR .
+
+    $default  reduce using rule 25 (single)
+
+
+State 24
+
+    8 code_in_line: PRINT L_BRACKET expression . R_BRACKET SEMICOLON
+   17 expression: expression . ADD term
+   18           | expression . SUB term
+
+    ADD        shift, and go to state 32
+    SUB        shift, and go to state 33
+    R_BRACKET  shift, and go to state 34
+
+
+State 25
+
+   16 expression: term .
+   20 term: term . MUL single
+   21     | term . DIV single
+
+    MUL  shift, and go to state 35
+    DIV  shift, and go to state 36
+
+    $default  reduce using rule 16 (expression)
+
+
+State 26
+
+   19 term: single .
+
+    $default  reduce using rule 19 (term)
+
+
+State 27
+
+   12 definition: INT VAR ASSIGN . expression
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    expression  go to state 37
+    term        go to state 25
+    single      go to state 26
+
+
+State 28
+
+   10 var_assign: VAR ASSIGN expression .
+   11           | VAR ASSIGN expression . COMMA var_assign
+   17 expression: expression . ADD term
+   18           | expression . SUB term
+
+    ADD    shift, and go to state 32
+    SUB    shift, and go to state 33
+    COMMA  shift, and go to state 38
+
+    $default  reduce using rule 10 (var_assign)
+
+
+State 29
+
+   14 definition: definition COMMA VAR .
+   15           | definition COMMA VAR . ASSIGN expression
+
+    ASSIGN  shift, and go to state 39
+
+    $default  reduce using rule 14 (definition)
+
+
+State 30
+
+   24 single: SUB NUM .
+
+    $default  reduce using rule 24 (single)
+
+
+State 31
+
+   17 expression: expression . ADD term
+   18           | expression . SUB term
+   23 single: L_BRACKET expression . R_BRACKET
+
+    ADD        shift, and go to state 32
+    SUB        shift, and go to state 33
+    R_BRACKET  shift, and go to state 40
+
+
+State 32
+
+   17 expression: expression ADD . term
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    term    go to state 41
+    single  go to state 26
+
+
+State 33
+
+   18 expression: expression SUB . term
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    term    go to state 42
+    single  go to state 26
+
+
+State 34
+
+    8 code_in_line: PRINT L_BRACKET expression R_BRACKET . SEMICOLON
+
+    SEMICOLON  shift, and go to state 43
+
+
+State 35
+
+   20 term: term MUL . single
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    single  go to state 44
+
+
+State 36
+
+   21 term: term DIV . single
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    single  go to state 45
+
+
+State 37
+
+   12 definition: INT VAR ASSIGN expression .
+   17 expression: expression . ADD term
+   18           | expression . SUB term
+
+    ADD  shift, and go to state 32
+    SUB  shift, and go to state 33
+
+    $default  reduce using rule 12 (definition)
+
+
+State 38
+
+   11 var_assign: VAR ASSIGN expression COMMA . var_assign
+
+    VAR  shift, and go to state 6
+
+    var_assign  go to state 46
+
+
+State 39
+
+   15 definition: definition COMMA VAR ASSIGN . expression
+
+    SUB        shift, and go to state 20
+    L_BRACKET  shift, and go to state 21
+    NUM        shift, and go to state 22
+    VAR        shift, and go to state 23
+
+    expression  go to state 47
+    term        go to state 25
+    single      go to state 26
+
+
+State 40
+
+   23 single: L_BRACKET expression R_BRACKET .
+
+    $default  reduce using rule 23 (single)
+
+
+State 41
+
+   17 expression: expression ADD term .
+   20 term: term . MUL single
+   21     | term . DIV single
+
+    MUL  shift, and go to state 35
+    DIV  shift, and go to state 36
+
+    $default  reduce using rule 17 (expression)
+
+
+State 42
+
+   18 expression: expression SUB term .
+   20 term: term . MUL single
+   21     | term . DIV single
+
+    MUL  shift, and go to state 35
+    DIV  shift, and go to state 36
+
+    $default  reduce using rule 18 (expression)
+
+
+State 43
+
+    8 code_in_line: PRINT L_BRACKET expression R_BRACKET SEMICOLON .
+
+    $default  reduce using rule 8 (code_in_line)
+
+
+State 44
+
+   20 term: term MUL single .
+
+    $default  reduce using rule 20 (term)
+
+
+State 45
+
+   21 term: term DIV single .
+
+    $default  reduce using rule 21 (term)
+
+
+State 46
+
+   11 var_assign: VAR ASSIGN expression COMMA var_assign .
+
+    $default  reduce using rule 11 (var_assign)
+
+
+State 47
+
+   15 definition: definition COMMA VAR ASSIGN expression .
+   17 expression: expression . ADD term
+   18           | expression . SUB term
+
+    ADD  shift, and go to state 32
+    SUB  shift, and go to state 33
+
+    $default  reduce using rule 15 (definition)
