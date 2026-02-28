@@ -1,0 +1,1 @@
+random.uniform(0, 1)
